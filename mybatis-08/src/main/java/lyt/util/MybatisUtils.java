@@ -10,20 +10,22 @@ import java.io.InputStream;
 
 public class MybatisUtils {
     private static SqlSessionFactory sqlSessionFactory; //提升作用域
-    static{
+
+    static {
         try {
             //使用Mybatis第一步：获取sqlSessionFactory对象
             String resource = "mybatis-config.xml";
-            InputStream inputStream= Resources.getResourceAsStream(resource);
+            InputStream inputStream = Resources.getResourceAsStream(resource);
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     //既然有了sqlSessionFactory，顾名思义，我们就可以从中获得SqlSession的实例了。
     //SqlSess完全包含了面向数据库执行SQL命令所需的所有方法
-    public static SqlSession getSqlSession(){
-
+    public static SqlSession getSqlSession() {
+         //true表示自动commit
         return sqlSessionFactory.openSession(true);
     }
 

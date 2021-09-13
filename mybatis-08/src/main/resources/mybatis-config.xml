@@ -14,9 +14,10 @@
     </properties>
 
     <settings>
+<!--是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!--STDOUT_LOGGING:标准的日志工厂实现-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
-<!--        <setting name="logImpl" value="LOG4J"/>-->
     </settings>
 
 
@@ -47,11 +48,9 @@
             </dataSource>
         </environment>
     </environments>
+<mappers>
+    <mapper class="lyt.dao.BlogMapper"/>
 
-<!--   绑定接口-->
-    <mappers>
-        <mapper class="lyt.dao.UserMapper"/>
-<!--        <mapper resource="lyt/dao/*.xml"></mapper>-->
-    </mappers>
+</mappers>
 
 </configuration>

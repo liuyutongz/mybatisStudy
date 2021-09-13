@@ -16,7 +16,6 @@
     <settings>
         <!--STDOUT_LOGGING:标准的日志工厂实现-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
-<!--        <setting name="logImpl" value="LOG4J"/>-->
     </settings>
 
 
@@ -47,11 +46,9 @@
             </dataSource>
         </environment>
     </environments>
-
-<!--   绑定接口-->
-    <mappers>
-        <mapper class="lyt.dao.UserMapper"/>
-<!--        <mapper resource="lyt/dao/*.xml"></mapper>-->
-    </mappers>
+<mappers>
+    <mapper class="lyt.dao.TeacherMapper"/>
+    <mapper class="lyt.dao.StudentMapper"/>
+</mappers>
 
 </configuration>
