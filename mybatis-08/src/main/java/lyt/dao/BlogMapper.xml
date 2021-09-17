@@ -13,7 +13,7 @@
 
     <sql id="if-title-author">
         <if test="title!=null">
-            title=#{title}
+            title like "%"#{title}"%"
         </if>
         <if test="author!=null">
             and author=#{author}

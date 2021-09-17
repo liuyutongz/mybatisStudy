@@ -42,8 +42,8 @@ public class MyTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
         HashMap hashMap = new HashMap();
-       // hashMap.put("title","Java如此简单");
-        hashMap.put("author","刘");
+        hashMap.put("title","java");
+        //hashMap.put("author","刘");
         List<Blog> blogs =mapper.queryBlogIF(hashMap);
         for (Blog blog : blogs) {
             System.out.println(blog);

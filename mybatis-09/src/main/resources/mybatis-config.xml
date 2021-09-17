@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--configuration核心配置文件-->
+<configuration>
+
+    <!--    引入外部配置文件-->
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <!--        优先走外部的配置文件走密码是123456-->
+        <property name="root" value="111111"/>
+    </properties>
+
+    <settings>
+        <!--是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--STDOUT_LOGGING:标准的日志工厂实现-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--        显示的开启全局缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+
+    <!--  可以给实体类起别名  -->
+    <typeAliases>
+        <package name="lyt.pojo"/>
+    </typeAliases>
+
+    <environments default="test">
+        <!--        环境 开发、测试、-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--           useSSL安全连接   &需要转义&amp;-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3307/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper class="lyt.dao.UserMapper"/>
+
+    </mappers>
+
+</configuration>
